@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Aerolíneas Don Ramón</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../imagenes/nubes-4k.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .login-container select,
+        .login-container input {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #5369e4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #4358c4;
+        }
+        .create-account {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .create-account a {
+            color: #5369e4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #5369e4;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">Aerolíneas Don Ramón</div>
+        <h1>Iniciar Sesión</h1>
+        <form id="loginForm">
+            <select id="role" required>
+                <option value="" disabled selected>Selecciona tu rol</option>
+                <option value="usuario">Usuario</option>
+                <option value="admin">Administrador</option>
+            </select>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <div class="create-account">
+            ¿No tienes una cuenta? <a href="cuenta.html">Crear cuenta</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const role = document.getElementById('role').value;
+
+            if (role === 'usuario') {
+                window.location.href = 'inicio_de_usuario.html';
+            } else if (role === 'admin') {
+                window.location.href = 'inicio_de_admin.html';
+            } else {
+                alert('Por favor, selecciona un rol válido.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - Aerolíneas Don Ramón</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('../imagenes/nubes-4k.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .account-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .account-container h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .account-container input {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row input {
+            flex: 1;
+        }
+        .account-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #5369e4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .account-container button:hover {
+            background-color: #4358c4;
+        }
+        .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .login-link a {
+            color: #5369e4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #5369e4;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="account-container">
+        <div class="logo">Aerolíneas Don Ramón</div>
+        <h1>Crear Cuenta</h1>
+        <form id="accountForm">
+            <div class="form-row">
+                <input type="text" id="firstName" placeholder="Nombre" required>
+                <input type="text" id="lastName" placeholder="Apellido" required>
+            </div>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="tel" id="phone" placeholder="Teléfono" required>
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+            <div>
+                <input type="checkbox" id="terms" required>
+                <label for="terms">Acepto los términos y condiciones</label>
+            </div>
+            <button type="submit">Crear Cuenta</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <h3>¡Cuenta creada exitosamente!</h3>
+            <p>Tu cuenta ha sido creada. Ahora puedes iniciar sesión.</p>
+            <a href="login.html">Volver al inicio de sesión</a>
+        </div>
+        
+        <div class="login-link">
+            ¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('accountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Validar que las contraseñas coincidan
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden. Por favor, verifica.');
+                return;
+            }
+            
+            // Validar que se aceptaron los términos
+            if (!document.getElementById('terms').checked) {
+                alert('Debes aceptar los términos y condiciones para crear una cuenta.');
+                return;
+            }
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('accountForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // En una implementación real, aquí enviaríamos los datos al servidor
+        });
+    </script>
+</body>
+</html>
